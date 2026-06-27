@@ -54,8 +54,8 @@
           </div>
         </div>
         <div style="margin-top:28px;">
-          <div style="font-size:0.75rem; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--text-muted);">
-            Submit your prediction before <span style="color:var(--gold)">12 July 2026</span>
+          <div style="font-size: 1.1rem; color: var(--text-muted);">
+            Submit your prediction before <span style="color:var(--gold)">09 July 2026, 11:59 PM</span>
           </div>
         </div>
       </div>

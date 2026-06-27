@@ -4,9 +4,9 @@
 ═══════════════════════════════════════════════════════════════════ */
 
 (function () {
-  // ── TARGET DATE: 12 July 2026 23:59:59 IST (UTC+5:30) ──────────
-  // IST = UTC + 5:30 → Target UTC = 2026-07-12T18:29:59Z
-  const TARGET = new Date('2026-07-12T18:29:59Z').getTime();
+  // ── TARGET DATE: 09 July 2026 23:59:59 IST (UTC+5:30) ──────────
+  // IST = UTC + 5:30 → Target UTC = 2026-07-09T18:29:59Z
+  const TARGET = new Date('2026-07-09T18:29:59Z').getTime();
 
   const els = {
     days:    document.getElementById('cdDays'),
