@@ -1,0 +1,411 @@
+/* ═══════════════════════════════════════════════════════════════════
+   FIFA WORLD CUP 2026 — ANIMATIONS STYLESHEET
+   SMYM Chemmalamattom | animations.css
+═══════════════════════════════════════════════════════════════════ */
+
+/* ── KEYFRAMES ──────────────────────────────────────────────────── */
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(30px, -20px) scale(1.05); }
+  66%       { transform: translate(-20px, 20px) scale(0.97); }
+}
+
+@keyframes trophyFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-16px) rotate(1deg); }
+}
+
+@keyframes trophyPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(212,175,55,0.3); }
+  50%       { box-shadow: 0 0 50px rgba(212,175,55,0.6), 0 0 80px rgba(212,175,55,0.2); }
+}
+
+@keyframes ringExpand {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+
+@keyframes footballRoll {
+  0%   { transform: translateX(-30px) rotate(0deg); opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateX(100vw) rotate(720deg); opacity: 0; }
+}
+
+@keyframes movingLight {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.8; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes lightMove {
+  0%, 100% { transform: translate(0, 0); opacity: 0.6; }
+  50%       { transform: translate(20px, -15px); opacity: 1; }
+}
+
+@keyframes sepBlink {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 0.1; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes dotPulse {
+  0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
+  40%            { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+@keyframes ripple {
+  0%   { transform: scale(0); opacity: 1; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+@keyframes glow {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(212,175,55,0.4)); }
+  50%       { filter: drop-shadow(0 0 24px rgba(212,175,55,0.8)); }
+}
+
+@keyframes slideInPanel {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes teamCardPop {
+  0%   { transform: scale(0.9); opacity: 0; }
+  70%  { transform: scale(1.04); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes numberFlip {
+  0%   { transform: rotateX(90deg); opacity: 0; }
+  100% { transform: rotateX(0deg); opacity: 1; }
+}
+
+@keyframes progressGrow {
+  from { width: 0; }
+}
+
+@keyframes successBounce {
+  0%   { transform: scale(0) rotate(-10deg); }
+  60%  { transform: scale(1.15) rotate(5deg); }
+  80%  { transform: scale(0.95) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes floatParticle {
+  0%   { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.8; }
+  100% { transform: translateY(-20px) translateX(var(--drift, 50px)) rotate(360deg); opacity: 0; }
+}
+
+/* ── ANIMATION UTILITY CLASSES ──────────────────────────────────── */
+
+.anim-fade-up    { animation: fadeInUp 0.6s ease forwards; }
+.anim-fade-down  { animation: fadeInDown 0.6s ease forwards; }
+.anim-fade-left  { animation: fadeInLeft 0.6s ease forwards; }
+.anim-fade-right { animation: fadeInRight 0.6s ease forwards; }
+.anim-zoom       { animation: zoomIn 0.5s ease forwards; }
+.anim-scale-up   { animation: scaleUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+.anim-glow       { animation: glow 2s ease-in-out infinite; }
+
+/* Delay utilities */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+
+/* ── RIPPLE EFFECT ON BUTTONS ───────────────────────────────────── */
+.btn-primary-gold,
+.btn-outline-gold {
+  overflow: hidden;
+}
+.btn-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  width: 20px; height: 20px;
+  margin-left: -10px; margin-top: -10px;
+  animation: ripple 0.6s linear;
+  pointer-events: none;
+}
+
+/* ── SHIMMER SKELETON ───────────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.05) 25%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(255,255,255,0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* ── CONFETTI CANVAS ────────────────────────────────────────────── */
+#confettiCanvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── TEAM CARD ENTRANCE ─────────────────────────────────────────── */
+.team-card {
+  animation: teamCardPop 0.25s ease forwards;
+}
+.team-card:nth-child(odd)  { animation-delay: 0.02s; }
+.team-card:nth-child(3n)   { animation-delay: 0.04s; }
+.team-card:nth-child(4n)   { animation-delay: 0.06s; }
+
+/* ── COUNTDOWN FLIP ─────────────────────────────────────────────── */
+.cd-number.flip {
+  animation: numberFlip 0.3s ease;
+}
+
+/* ── SECTION TRANSITION ─────────────────────────────────────────── */
+.section-enter {
+  animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.section-exit {
+  animation: fadeInDown 0.3s cubic-bezier(0.4, 0, 0.2, 1) reverse forwards;
+}
+
+/* ── SUCCESS ANIMATION ──────────────────────────────────────────── */
+.success-icon.animate {
+  animation: successBounce 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ── LOADING OVERLAY ────────────────────────────────────────────── */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-deepest);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 9998;
+  transition: opacity 0.5s ease;
+}
+.page-loader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.loader-trophy {
+  font-size: 3rem;
+  color: var(--gold);
+  animation: trophyPulse 1.5s ease-in-out infinite;
+}
+.loader-bar {
+  width: 200px;
+  height: 3px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.loader-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+  border-radius: 3px;
+  animation: progressGrow 1.5s ease forwards;
+  width: 100%;
+}
+.loader-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ── HOVER GLOW CARDS ───────────────────────────────────────────── */
+.rule-card:hover .rule-icon,
+.about-card:hover .about-icon {
+  box-shadow: 0 0 20px rgba(212,175,55,0.3);
+  border-color: rgba(212,175,55,0.4);
+}
+
+/* ── NAVBAR HAMBURGER ANIMATION ─────────────────────────────────── */
+.navbar-toggler.open .toggler-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar-toggler.open .toggler-bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.navbar-toggler.open .toggler-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── STICKY NAV ANIMATION ───────────────────────────────────────── */
+.navbar { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+
+/* ── GOLD PARTICLE ──────────────────────────────────────────────── */
+.gold-particle {
+  position: fixed;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  pointer-events: none;
+  z-index: 1;
+  animation: floatParticle var(--dur, 8s) ease-in var(--delay, 0s) infinite;
+}
+
+/* ── LEADERBOARD RANK REVEAL ────────────────────────────────────── */
+.lb-row {
+  opacity: 0;
+  animation: fadeInLeft 0.4s ease forwards;
+}
+.lb-row:nth-child(1) { animation-delay: 0.05s; }
+.lb-row:nth-child(2) { animation-delay: 0.1s; }
+.lb-row:nth-child(3) { animation-delay: 0.15s; }
+.lb-row:nth-child(4) { animation-delay: 0.2s; }
+.lb-row:nth-child(5) { animation-delay: 0.25s; }
+.lb-row:nth-child(6) { animation-delay: 0.3s; }
+.lb-row:nth-child(7) { animation-delay: 0.35s; }
+.lb-row:nth-child(8) { animation-delay: 0.4s; }
+.lb-row:nth-child(9) { animation-delay: 0.45s; }
+.lb-row:nth-child(10) { animation-delay: 0.5s; }
+
+/* ── AWARD CARD ENTRANCE ────────────────────────────────────────── */
+.award-card:hover .award-icon {
+  transform: scale(1.1) rotate(5deg);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── TEAM CARD SELECT PULSE ─────────────────────────────────────── */
+@keyframes selectPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(212,175,55,0.5); }
+  70%  { box-shadow: 0 0 0 10px rgba(212,175,55,0); }
+  100% { box-shadow: 0 0 0 0 rgba(212,175,55,0); }
+}
+.team-card.just-selected {
+  animation: selectPulse 0.4s ease;
+}
+
+/* ── CHOICES.JS DARK THEME OVERRIDES ────────────────────────────── */
+.choices {
+  margin: 0;
+}
+.choices__inner {
+  background: rgba(255,255,255,0.05) !important;
+  border: 1.5px solid rgba(255,255,255,0.12) !important;
+  border-radius: var(--radius-md) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.9rem !important;
+  min-height: 48px !important;
+  padding: 8px 12px !important;
+}
+.choices__inner:focus-within {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 0 3px rgba(212,175,55,0.12) !important;
+}
+.choices__list--dropdown {
+  background: #0d1b2a !important;
+  border: 1px solid var(--card-border) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-lg) !important;
+  z-index: 1100 !important;
+}
+.choices__list--dropdown .choices__item {
+  color: var(--text-secondary) !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.88rem !important;
+  padding: 10px 14px !important;
+}
+.choices__list--dropdown .choices__item--selectable.is-highlighted {
+  background: rgba(212,175,55,0.15) !important;
+  color: var(--gold) !important;
+}
+.choices__input {
+  background: transparent !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-body) !important;
+}
+.choices__input::placeholder { color: var(--text-muted) !important; }
+.choices__placeholder { color: var(--text-muted) !important; }
+.choices__item.choices__item--selectable { color: var(--text-primary) !important; }
+.choices__list--single .choices__item { color: var(--text-primary) !important; }
+
+/* ── SWEETALERT2 DARK THEME ─────────────────────────────────────── */
+.swal2-popup {
+  background: rgba(13, 27, 42, 0.98) !important;
+  border: 1px solid var(--card-border) !important;
+  border-radius: var(--radius-xl) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-body) !important;
+  backdrop-filter: var(--blur-glass) !important;
+}
+.swal2-title {
+  font-family: var(--font-heading) !important;
+  letter-spacing: 2px !important;
+  color: var(--text-primary) !important;
+}
+.swal2-html-container {
+  color: var(--text-secondary) !important;
+  font-family: var(--font-body) !important;
+}
+.swal2-confirm {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark)) !important;
+  color: #0B1F3A !important;
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  border-radius: 30px !important;
+  padding: 10px 28px !important;
+}
+.swal2-cancel {
+  background: rgba(255,255,255,0.08) !important;
+  color: var(--text-secondary) !important;
+  border-radius: 30px !important;
+  padding: 10px 28px !important;
+}
+.swal2-icon.swal2-success { border-color: var(--gold) !important; }
+.swal2-icon.swal2-success .swal2-success-ring { border-color: rgba(212,175,55,0.3) !important; }
