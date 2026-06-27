@@ -1,64 +1,64 @@
-﻿/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   FIFA WORLD CUP 2026 â€” PREDICTION WIZARD MODULE
+/* ═══════════════════════════════════════════════════════════════════
+   FIFA WORLD CUP 2026 — PREDICTION WIZARD MODULE
    SMYM Chemmalamattom | prediction.js
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+═══════════════════════════════════════════════════════════════════ */
 
-// â”€â”€ DATA: 48 FIFA WORLD CUP 2026 TEAMS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── DATA: 48 FIFA WORLD CUP 2026 TEAMS ──────────────────────────────
 const TEAMS = [
-  { name: 'Argentina',    flag: 'ðŸ‡¦ðŸ‡·', conf: 'CONMEBOL' },
-  { name: 'Australia',    flag: 'ðŸ‡¦ðŸ‡º', conf: 'AFC' },
-  { name: 'Austria',      flag: 'ðŸ‡¦ðŸ‡¹', conf: 'UEFA' },
-  { name: 'Belgium',      flag: 'ðŸ‡§ðŸ‡ª', conf: 'UEFA' },
-  { name: 'Bolivia',      flag: 'ðŸ‡§ðŸ‡´', conf: 'CONMEBOL' },
-  { name: 'Brazil',       flag: 'ðŸ‡§ðŸ‡·', conf: 'CONMEBOL' },
-  { name: 'Canada',       flag: 'ðŸ‡¨ðŸ‡¦', conf: 'CONCACAF', host: true },
-  { name: 'Chile',        flag: 'ðŸ‡¨ðŸ‡±', conf: 'CONMEBOL' },
-  { name: 'Colombia',     flag: 'ðŸ‡¨ðŸ‡´', conf: 'CONMEBOL' },
-  { name: 'Costa Rica',   flag: 'ðŸ‡¨ðŸ‡·', conf: 'CONCACAF' },
-  { name: 'Croatia',      flag: 'ðŸ‡­ðŸ‡·', conf: 'UEFA' },
-  { name: 'Czech Republic',flag:'ðŸ‡¨ðŸ‡¿', conf: 'UEFA' },
-  { name: 'Denmark',      flag: 'ðŸ‡©ðŸ‡°', conf: 'UEFA' },
-  { name: 'Ecuador',      flag: 'ðŸ‡ªðŸ‡¨', conf: 'CONMEBOL' },
-  { name: 'Egypt',        flag: 'ðŸ‡ªðŸ‡¬', conf: 'CAF' },
-  { name: 'England',      flag: 'ðŸ´ó §ó ¢ó ¥ó ®ó §ó ¿', conf: 'UEFA' },
-  { name: 'France',       flag: 'ðŸ‡«ðŸ‡·', conf: 'UEFA' },
-  { name: 'Germany',      flag: 'ðŸ‡©ðŸ‡ª', conf: 'UEFA' },
-  { name: 'Honduras',     flag: 'ðŸ‡­ðŸ‡³', conf: 'CONCACAF' },
-  { name: 'Iran',         flag: 'ðŸ‡®ðŸ‡·', conf: 'AFC' },
-  { name: 'Italy',        flag: 'ðŸ‡®ðŸ‡¹', conf: 'UEFA' },
-  { name: 'Ivory Coast',  flag: 'ðŸ‡¨ðŸ‡®', conf: 'CAF' },
-  { name: 'Jamaica',      flag: 'ðŸ‡¯ðŸ‡²', conf: 'CONCACAF' },
-  { name: 'Japan',        flag: 'ðŸ‡¯ðŸ‡µ', conf: 'AFC' },
-  { name: 'Jordan',       flag: 'ðŸ‡¯ðŸ‡´', conf: 'AFC' },
-  { name: 'Mexico',       flag: 'ðŸ‡²ðŸ‡½', conf: 'CONCACAF', host: true },
-  { name: 'Morocco',      flag: 'ðŸ‡²ðŸ‡¦', conf: 'CAF' },
-  { name: 'Netherlands',  flag: 'ðŸ‡³ðŸ‡±', conf: 'UEFA' },
-  { name: 'New Zealand',  flag: 'ðŸ‡³ðŸ‡¿', conf: 'OFC' },
-  { name: 'Nigeria',      flag: 'ðŸ‡³ðŸ‡¬', conf: 'CAF' },
-  { name: 'Norway',       flag: 'ðŸ‡³ðŸ‡´', conf: 'UEFA' },
-  { name: 'Panama',       flag: 'ðŸ‡µðŸ‡¦', conf: 'CONCACAF' },
-  { name: 'Paraguay',     flag: 'ðŸ‡µðŸ‡¾', conf: 'CONMEBOL' },
-  { name: 'Peru',         flag: 'ðŸ‡µðŸ‡ª', conf: 'CONMEBOL' },
-  { name: 'Poland',       flag: 'ðŸ‡µðŸ‡±', conf: 'UEFA' },
-  { name: 'Portugal',     flag: 'ðŸ‡µðŸ‡¹', conf: 'UEFA' },
-  { name: 'Qatar',        flag: 'ðŸ‡¶ðŸ‡¦', conf: 'AFC' },
-  { name: 'Saudi Arabia', flag: 'ðŸ‡¸ðŸ‡¦', conf: 'AFC' },
-  { name: 'Senegal',      flag: 'ðŸ‡¸ðŸ‡³', conf: 'CAF' },
-  { name: 'Serbia',       flag: 'ðŸ‡·ðŸ‡¸', conf: 'UEFA' },
-  { name: 'South Africa', flag: 'ðŸ‡¿ðŸ‡¦', conf: 'CAF' },
-  { name: 'South Korea',  flag: 'ðŸ‡°ðŸ‡·', conf: 'AFC' },
-  { name: 'Spain',        flag: 'ðŸ‡ªðŸ‡¸', conf: 'UEFA' },
-  { name: 'Switzerland',  flag: 'ðŸ‡¨ðŸ‡­', conf: 'UEFA' },
-  { name: 'Tunisia',      flag: 'ðŸ‡¹ðŸ‡³', conf: 'CAF' },
-  { name: 'Turkey',       flag: 'ðŸ‡¹ðŸ‡·', conf: 'UEFA' },
-  { name: 'Ukraine',      flag: 'ðŸ‡ºðŸ‡¦', conf: 'UEFA' },
-  { name: 'United States',flag: 'ðŸ‡ºðŸ‡¸', conf: 'CONCACAF', host: true },
+  { name: 'Argentina',    flag: '🇦🇷', conf: 'CONMEBOL' },
+  { name: 'Australia',    flag: '🇦🇺', conf: 'AFC' },
+  { name: 'Austria',      flag: '🇦🇹', conf: 'UEFA' },
+  { name: 'Belgium',      flag: '🇧🇪', conf: 'UEFA' },
+  { name: 'Bolivia',      flag: '🇧🇴', conf: 'CONMEBOL' },
+  { name: 'Brazil',       flag: '🇧🇷', conf: 'CONMEBOL' },
+  { name: 'Canada',       flag: '🇨🇦', conf: 'CONCACAF', host: true },
+  { name: 'Chile',        flag: '🇨🇱', conf: 'CONMEBOL' },
+  { name: 'Colombia',     flag: '🇨🇴', conf: 'CONMEBOL' },
+  { name: 'Costa Rica',   flag: '🇨🇷', conf: 'CONCACAF' },
+  { name: 'Croatia',      flag: '🇭🇷', conf: 'UEFA' },
+  { name: 'Czech Republic',flag:'🇨🇿', conf: 'UEFA' },
+  { name: 'Denmark',      flag: '🇩🇰', conf: 'UEFA' },
+  { name: 'Ecuador',      flag: '🇪🇨', conf: 'CONMEBOL' },
+  { name: 'Egypt',        flag: '🇪🇬', conf: 'CAF' },
+  { name: 'England',      flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', conf: 'UEFA' },
+  { name: 'France',       flag: '🇫🇷', conf: 'UEFA' },
+  { name: 'Germany',      flag: '🇩🇪', conf: 'UEFA' },
+  { name: 'Honduras',     flag: '🇭🇳', conf: 'CONCACAF' },
+  { name: 'Iran',         flag: '🇮🇷', conf: 'AFC' },
+  { name: 'Italy',        flag: '🇮🇹', conf: 'UEFA' },
+  { name: 'Ivory Coast',  flag: '🇨🇮', conf: 'CAF' },
+  { name: 'Jamaica',      flag: '🇯🇲', conf: 'CONCACAF' },
+  { name: 'Japan',        flag: '🇯🇵', conf: 'AFC' },
+  { name: 'Jordan',       flag: '🇯🇴', conf: 'AFC' },
+  { name: 'Mexico',       flag: '🇲🇽', conf: 'CONCACAF', host: true },
+  { name: 'Morocco',      flag: '🇲🇦', conf: 'CAF' },
+  { name: 'Netherlands',  flag: '🇳🇱', conf: 'UEFA' },
+  { name: 'New Zealand',  flag: '🇳🇿', conf: 'OFC' },
+  { name: 'Nigeria',      flag: '🇳🇬', conf: 'CAF' },
+  { name: 'Norway',       flag: '🇳🇴', conf: 'UEFA' },
+  { name: 'Panama',       flag: '🇵🇦', conf: 'CONCACAF' },
+  { name: 'Paraguay',     flag: '🇵🇾', conf: 'CONMEBOL' },
+  { name: 'Peru',         flag: '🇵🇪', conf: 'CONMEBOL' },
+  { name: 'Poland',       flag: '🇵🇱', conf: 'UEFA' },
+  { name: 'Portugal',     flag: '🇵🇹', conf: 'UEFA' },
+  { name: 'Qatar',        flag: '🇶🇦', conf: 'AFC' },
+  { name: 'Saudi Arabia', flag: '🇸🇦', conf: 'AFC' },
+  { name: 'Senegal',      flag: '🇸🇳', conf: 'CAF' },
+  { name: 'Serbia',       flag: '🇷🇸', conf: 'UEFA' },
+  { name: 'South Africa', flag: '🇿🇦', conf: 'CAF' },
+  { name: 'South Korea',  flag: '🇰🇷', conf: 'AFC' },
+  { name: 'Spain',        flag: '🇪🇸', conf: 'UEFA' },
+  { name: 'Switzerland',  flag: '🇨🇭', conf: 'UEFA' },
+  { name: 'Tunisia',      flag: '🇹🇳', conf: 'CAF' },
+  { name: 'Turkey',       flag: '🇹🇷', conf: 'UEFA' },
+  { name: 'Ukraine',      flag: '🇺🇦', conf: 'UEFA' },
+  { name: 'United States',flag: '🇺🇸', conf: 'CONCACAF', host: true },
 ];
 
-// â”€â”€ DATA: PLAYERS (for award dropdowns) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── DATA: PLAYERS (for award dropdowns) ──────────────────────────────
 const PLAYERS = [
   // Argentina
-  'Lionel Messi (Argentina)', 'JuliÃ¡n Ãlvarez (Argentina)', 'Lautaro MartÃ­nez (Argentina)',
+  'Lionel Messi (Argentina)', 'Julián Álvarez (Argentina)', 'Lautaro Martínez (Argentina)',
   'Alejandro Garnacho (Argentina)', 'Paulo Dybala (Argentina)',
   // Australia
   'Mathew Leckie (Australia)', 'Mitchell Duke (Australia)',
@@ -71,16 +71,16 @@ const PLAYERS = [
   // Canada
   'Alphonso Davies (Canada)', 'Jonathan David (Canada)', 'Cyle Larin (Canada)',
   // Chile
-  'Alexis SÃ¡nchez (Chile)', 'Ben Brereton DÃ­az (Chile)',
+  'Alexis Sánchez (Chile)', 'Ben Brereton Díaz (Chile)',
   // Colombia
-  'Luis DÃ­az (Colombia)', 'James RodrÃ­guez (Colombia)', 'Radamel Falcao (Colombia)',
-  'Jhon CÃ³rdoba (Colombia)',
+  'Luis Díaz (Colombia)', 'James Rodríguez (Colombia)', 'Radamel Falcao (Colombia)',
+  'Jhon Córdoba (Colombia)',
   // Croatia
-  'Luka ModriÄ‡ (Croatia)', 'Ivan PeriÅ¡iÄ‡ (Croatia)', 'Andrej KramariÄ‡ (Croatia)',
+  'Luka Modrić (Croatia)', 'Ivan Perišić (Croatia)', 'Andrej Kramarić (Croatia)',
   // Denmark
-  'Christian Eriksen (Denmark)', 'Rasmus HÃ¸jlund (Denmark)',
+  'Christian Eriksen (Denmark)', 'Rasmus Højlund (Denmark)',
   // Ecuador
-  'Enner Valencia (Ecuador)', 'MoisÃ©s Caicedo (Ecuador)',
+  'Enner Valencia (Ecuador)', 'Moisés Caicedo (Ecuador)',
   // Egypt
   'Mohamed Salah (Egypt)', 'Mostafa Mohamed (Egypt)',
   // England
@@ -88,11 +88,11 @@ const PLAYERS = [
   'Jude Bellingham (England)', 'Marcus Rashford (England)', 'Ollie Watkins (England)',
   'Ivan Toney (England)',
   // France
-  'Kylian MbappÃ© (France)', 'Antoine Griezmann (France)', 'Ousmane DembÃ©lÃ© (France)',
+  'Kylian Mbappé (France)', 'Antoine Griezmann (France)', 'Ousmane Dembélé (France)',
   'Marcus Thuram (France)',
   // Germany
-  'Jamal Musiala (Germany)', 'Florian Wirtz (Germany)', 'Leroy SanÃ© (Germany)',
-  'Kai Havertz (Germany)', 'Thomas MÃ¼ller (Germany)',
+  'Jamal Musiala (Germany)', 'Florian Wirtz (Germany)', 'Leroy Sané (Germany)',
+  'Kai Havertz (Germany)', 'Thomas Müller (Germany)',
   // Honduras
   'Romell Quioto (Honduras)',
   // Iran
@@ -101,13 +101,13 @@ const PLAYERS = [
   'Federico Chiesa (Italy)', 'Gianluca Scamacca (Italy)', 'Ciro Immobile (Italy)',
   'Lorenzo Pellegrini (Italy)',
   // Ivory Coast
-  'SÃ©bastien Haller (Ivory Coast)', 'Nicolas PÃ©pÃ© (Ivory Coast)',
+  'Sébastien Haller (Ivory Coast)', 'Nicolas Pépé (Ivory Coast)',
   // Japan
   'Takumi Minamino (Japan)', 'Daichi Kamada (Japan)', 'Ritsu Doan (Japan)',
   // Jordan
   'Musa Al-Taamari (Jordan)',
   // Mexico
-  'Hirving Lozano (Mexico)', 'RaÃºl JimÃ©nez (Mexico)', 'Edson Ãlvarez (Mexico)',
+  'Hirving Lozano (Mexico)', 'Raúl Jiménez (Mexico)', 'Edson Álvarez (Mexico)',
   // Morocco
   'Hakim Ziyech (Morocco)', 'Youssef En-Nesyri (Morocco)', 'Achraf Hakimi (Morocco)',
   // Netherlands
@@ -116,70 +116,70 @@ const PLAYERS = [
   // Nigeria
   'Victor Osimhen (Nigeria)', 'Taiwo Awoniyi (Nigeria)',
   // Norway
-  'Erling Haaland (Norway)', 'Martin Ã˜degaard (Norway)',
+  'Erling Haaland (Norway)', 'Martin Ødegaard (Norway)',
   // Panama
-  'Ismael DÃ­az (Panama)', 'Rolando Blackburn (Panama)',
+  'Ismael Díaz (Panama)', 'Rolando Blackburn (Panama)',
   // Peru
   'Paolo Guerrero (Peru)', 'Gianluca Lapadula (Peru)',
   // Poland
   'Robert Lewandowski (Poland)',
   // Portugal
   'Cristiano Ronaldo (Portugal)', 'Bruno Fernandes (Portugal)',
-  'Rafael LeÃ£o (Portugal)', 'Bernardo Silva (Portugal)', 'JoÃ£o FÃ©lix (Portugal)',
+  'Rafael Leão (Portugal)', 'Bernardo Silva (Portugal)', 'João Félix (Portugal)',
   // Saudi Arabia
   'Salem Al-Dawsari (Saudi Arabia)', 'Firas Al-Buraikan (Saudi Arabia)',
   // Senegal
-  'Sadio ManÃ© (Senegal)', 'Ismaila Sarr (Senegal)',
+  'Sadio Mané (Senegal)', 'Ismaila Sarr (Senegal)',
   // Serbia
-  'DuÅ¡an VlahoviÄ‡ (Serbia)', 'Aleksandar MitroviÄ‡ (Serbia)',
+  'Dušan Vlahović (Serbia)', 'Aleksandar Mitrović (Serbia)',
   // South Africa
   'Percy Tau (South Africa)',
   // South Korea
   'Son Heung-min (South Korea)', 'Hwang Hee-chan (South Korea)',
   // Spain
-  'Ãlvaro Morata (Spain)', 'Pedri (Spain)', 'Gavi (Spain)',
+  'Álvaro Morata (Spain)', 'Pedri (Spain)', 'Gavi (Spain)',
   'Ferran Torres (Spain)', 'Dani Olmo (Spain)', 'Lamine Yamal (Spain)',
   // Switzerland
   'Xherdan Shaqiri (Switzerland)', 'Breel Embolo (Switzerland)',
   // Tunisia
   'Wahbi Khazri (Tunisia)',
   // Turkey
-  'Hakan Ã‡alhanoÄŸlu (Turkey)', 'Arda GÃ¼ler (Turkey)', 'Burak YÄ±lmaz (Turkey)',
+  'Hakan Çalhanoğlu (Turkey)', 'Arda Güler (Turkey)', 'Burak Yılmaz (Turkey)',
   // Ukraine
   'Andriy Yarmolenko (Ukraine)', 'Roman Yaremchuk (Ukraine)',
   // United States
   'Christian Pulisic (United States)', 'Gio Reyna (United States)',
   'Ricardo Pepi (United States)',
   // Venezuela
-  'SalomÃ³n RondÃ³n (Venezuela)',
+  'Salomón Rondón (Venezuela)',
   // Uruguay
-  'Luis SuÃ¡rez (Uruguay)', 'Darwin NÃºÃ±ez (Uruguay)', 'Federico Valverde (Uruguay)',
+  'Luis Suárez (Uruguay)', 'Darwin Núñez (Uruguay)', 'Federico Valverde (Uruguay)',
 ].sort();
 
-// â”€â”€ DATA: GOALKEEPERS (for Golden Glove) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── DATA: GOALKEEPERS (for Golden Glove) ────────────────────────────
 const GOALKEEPERS = [
   'Alisson Becker (Brazil)', 'Ederson Moraes (Brazil)',
-  'Emiliano MartÃ­nez (Argentina)',
-  'Unai SimÃ³n (Spain)', 'David Raya (Spain)',
+  'Emiliano Martínez (Argentina)',
+  'Unai Simón (Spain)', 'David Raya (Spain)',
   'Mike Maignan (France)', 'Alphonse Areola (France)',
-  'Manuel Neuer (Germany)', 'Marc-AndrÃ© ter Stegen (Germany)',
+  'Manuel Neuer (Germany)', 'Marc-André ter Stegen (Germany)',
   'Gianluigi Donnarumma (Italy)',
   'Jordan Pickford (England)',
   'Thibaut Courtois (Belgium)',
   'Jan Oblak (Austria)',
-  'Wojciech SzczÄ™sny (Poland)',
+  'Wojciech Szczęsny (Poland)',
   'Diogo Costa (Portugal)',
   'Yann Sommer (Switzerland)',
   'Yassine Bounou (Morocco)',
   'Bono (Morocco)',
   'Andriy Lunin (Ukraine)',
-  'Ãngel Mena (Mexico)', 'Guillermo Ochoa (Mexico)',
+  'Ángel Mena (Mexico)', 'Guillermo Ochoa (Mexico)',
   'Matt Turner (United States)',
   'Alireza Beiranvand (Iran)',
   'Kim Seung-gyu (South Korea)',
 ].sort();
 
-// â”€â”€ STATE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── STATE ────────────────────────────────────────────────────────────
 const PredState = {
   currentStep: 1,
   selections: {
@@ -200,10 +200,10 @@ const PredState = {
   isSubmitting: false
 };
 
-// â”€â”€ DEADLINE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── DEADLINE ───────────────────────────────────────────────────────────
 const PREDICTION_DEADLINE = new Date('2026-07-12T18:29:59Z').getTime();
 
-// â”€â”€ INIT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── INIT ─────────────────────────────────────────────────────────────
 function initPrediction() {
   if (Date.now() > PREDICTION_DEADLINE) {
     showPredictionClosed();
@@ -218,7 +218,7 @@ function showPredictionClosed() {
   if (container) {
     container.innerHTML = `
       <div class="lb-locked" style="text-align:center; padding: 100px 20px; width: 100%;">
-        <div style="font-size: 4rem; margin-bottom: 16px;">ðŸ”’</div>
+        <div style="font-size: 4rem; margin-bottom: 16px;">🔒</div>
         <div style="font-family: var(--font-heading); font-size: clamp(1.8rem,4vw,3rem); letter-spacing: 4px; color: var(--gold); margin-bottom: 8px;">
           PREDICTIONS CLOSED
         </div>
@@ -233,7 +233,7 @@ function showPredictionClosed() {
   }
 }
 
-// â”€â”€ RENDER TEAM GRIDS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── RENDER TEAM GRIDS ────────────────────────────────────────────────
 function renderTeamGrids() {
   const grids = ['SF', 'Fin', 'Champ', 'RU', 'Third'];
   const domIds = {
@@ -257,13 +257,13 @@ function renderTeamGrids() {
            aria-label="${team.name}"
            title="${team.name}${team.host ? ' (Host)' : ''}">
         <span class="team-flag">${team.flag}</span>
-        <span class="team-name">${team.name}${team.host ? ' â˜…' : ''}</span>
+        <span class="team-name">${team.name}${team.host ? ' ★' : ''}</span>
       </div>
     `).join('');
   });
 }
 
-// â”€â”€ TEAM SELECTION TOGGLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── TEAM SELECTION TOGGLE ────────────────────────────────────────────
 function toggleTeamSelection(teamName, type, cardEl) {
   const maxMap = { SF: 4, Fin: 2, Champ: 1, RU: 1, Third: 1 };
   const selectionKey = {
@@ -325,7 +325,7 @@ function showMaxWarning(type, max) {
   });
 }
 
-// â”€â”€ UPDATE COUNTERS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── UPDATE COUNTERS ──────────────────────────────────────────────────
 function updateCounters() {
   const s = PredState.selections;
   const setCount = (id, val) => {
@@ -339,7 +339,7 @@ function updateCounters() {
   setCount('thirdCount', s.thirdPlace ? 1 : 0);
 }
 
-// â”€â”€ TEAM SEARCH FILTER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── TEAM SEARCH FILTER ───────────────────────────────────────────────
 function filterTeams() {
   const query = document.getElementById('teamSearch')?.value.toLowerCase().trim() || '';
   const grid  = document.getElementById('teamsGridSF');
@@ -350,7 +350,7 @@ function filterTeams() {
   });
 }
 
-// â”€â”€ CHOICES.JS INIT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── CHOICES.JS INIT ──────────────────────────────────────────────────
 function initChoicesDropdowns() {
   const bootEl  = document.getElementById('goldenBoot');
   const ballEl  = document.getElementById('goldenBall');
@@ -366,18 +366,7 @@ function initChoicesDropdowns() {
     classNames: { containerOuter: 'choices' }
   };
 
-  if (bootEl && !PredState.choicesInstances.boot) {
-    populateSelect(bootEl, PLAYERS);
-    PredState.choicesInstances.boot = new Choices(bootEl, choicesConfig);
-  }
-  if (ballEl && !PredState.choicesInstances.ball) {
-    populateSelect(ballEl, PLAYERS);
-    PredState.choicesInstances.ball = new Choices(ballEl, choicesConfig);
-  }
-  if (gloveEl && !PredState.choicesInstances.glove) {
-    populateSelect(gloveEl, GOALKEEPERS);
-    PredState.choicesInstances.glove = new Choices(gloveEl, choicesConfig);
-  }
+  
   if (tbEl && !PredState.choicesInstances.tbScorer) {
     populateSelect(tbEl, PLAYERS);
     PredState.choicesInstances.tbScorer = new Choices(tbEl, choicesConfig);
@@ -393,7 +382,7 @@ function populateSelect(el, items) {
   });
 }
 
-// â”€â”€ WIZARD NAVIGATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── WIZARD NAVIGATION ────────────────────────────────────────────────
 function wizardNext(currentStep) {
   if (!validateStep(currentStep)) return;
   goToStep(currentStep + 1);
@@ -425,7 +414,7 @@ function goToStep(targetStep) {
   if (targetStep === 4) buildReview();
 }
 
-// â”€â”€ PROGRESS BAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── PROGRESS BAR ─────────────────────────────────────────────────────
 function updateProgressBar(step) {
   const pct   = Math.round(((step - 1) / 4) * 100);
   const fill  = document.getElementById('progressBarFill');
@@ -435,7 +424,7 @@ function updateProgressBar(step) {
   const lines  = document.querySelectorAll('.prog-line');
 
   if (fill) fill.style.width = pct + '%';
-  if (text) text.textContent = `STEP ${step} OF 4 â€” ${labels[step]}`;
+  if (text) text.textContent = `STEP ${step} OF 4 — ${labels[step]}`;
 
   steps.forEach((s, i) => {
     s.classList.remove('active', 'completed');
@@ -447,7 +436,7 @@ function updateProgressBar(step) {
   });
 }
 
-// â”€â”€ VALIDATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── VALIDATION ───────────────────────────────────────────────────────
 function validateStep(step) {
   clearAllErrors();
   let valid = true;
@@ -460,7 +449,7 @@ function validateStep(step) {
     const phone = document.getElementById('phone')?.value.trim()      || '';
 
     if (!name)              { showError('fullNameErr', 'Please enter your full name.'); valid = false; }
-    if (!age || age < 5 || age > 100) { showError('ageErr', 'Please enter a valid age (5â€“100).'); valid = false; }
+    if (!age || age < 5 || age > 100) { showError('ageErr', 'Please enter a valid age (5–100).'); valid = false; }
     if (!house)             { showError('houseNameErr', 'Please enter your house name.'); valid = false; }
     if (!ward)              { showError('wardErr', 'Please select your ward.'); valid = false; }
     if (!phone || !/^[0-9]{10}$/.test(phone)) { showError('phoneErr', 'Please enter a valid 10-digit phone number.'); valid = false; }
@@ -529,30 +518,30 @@ function clearAllErrors() {
   });
 }
 
-// â”€â”€ BUILD REVIEW SCREEN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── BUILD REVIEW SCREEN ──────────────────────────────────────────────
 function buildReview() {
   const s = PredState.selections;
   const f = PredState.form;
   const a = PredState.awards;
 
   const reviewData = [
-    { label: 'ðŸ‘¤ Full Name',         value: f.fullName },
-    { label: 'ðŸŽ‚ Age',               value: f.age },
-    { label: 'ðŸ  House Name',        value: f.houseName },
-    { label: 'ðŸ“ Ward',              value: f.ward },
-    { label: 'ðŸ“ž Phone',             value: f.phone },
-    { label: 'ðŸ“§ Email',             value: f.email || 'â€”' },
-    { label: 'ðŸ† Champion',          value: teamWithFlag(s.champion) },
-    { label: 'ðŸ¥ˆ Runner-Up',         value: teamWithFlag(s.runnerUp) },
-    { label: 'ðŸ¥‰ 3rd Place',         value: teamWithFlag(s.thirdPlace) },
-    { label: 'â­ Finalists',         value: s.finalists.map(teamWithFlag).join(', ') || 'â€”' },
-    { label: 'ðŸŸï¸ Semi-finalists',   value: s.semifinalists.map(teamWithFlag).join(', ') || 'â€”' },
-    { label: 'ðŸ‘Ÿ Golden Boot',       value: a.goldenBoot   || 'â€”' },
-    { label: 'âš½ Golden Ball',       value: a.goldenBall   || 'â€”' },
-    { label: 'ðŸ§¤ Golden Glove',      value: a.goldenGlove  || 'â€”' },
-    { label: 'ðŸ”¢ Goals (TB)',        value: a.tbGoals      || 'â€”' },
-    { label: 'ðŸŽ¯ First Scorer (TB)', value: a.tbFirstScorer  || 'â€”' },
-    { label: 'â±ï¸ First Goal Min (TB)', value: a.tbFirstMinute || 'â€”' },
+    { label: '👤 Full Name',         value: f.fullName },
+    { label: '🎂 Age',               value: f.age },
+    { label: '🏠 House Name',        value: f.houseName },
+    { label: '📍 Ward',              value: f.ward },
+    { label: '📞 Phone',             value: f.phone },
+    { label: '📧 Email',             value: f.email || '—' },
+    { label: '🏆 Champion',          value: teamWithFlag(s.champion) },
+    { label: '🥈 Runner-Up',         value: teamWithFlag(s.runnerUp) },
+    { label: '🥉 3rd Place',         value: teamWithFlag(s.thirdPlace) },
+    { label: '⭐ Finalists',         value: s.finalists.map(teamWithFlag).join(', ') || '—' },
+    { label: '🏟️ Semi-finalists',   value: s.semifinalists.map(teamWithFlag).join(', ') || '—' },
+    { label: '👟 Golden Boot',       value: a.goldenBoot   || '—' },
+    { label: '⚽ Golden Ball',       value: a.goldenBall   || '—' },
+    { label: '🧤 Golden Glove',      value: a.goldenGlove  || '—' },
+    { label: '🔢 Goals (TB)',        value: a.tbGoals      || '—' },
+    { label: '🎯 First Scorer (TB)', value: a.tbFirstScorer  || '—' },
+    { label: '⏱️ First Goal Min (TB)', value: a.tbFirstMinute || '—' },
   ];
 
   const el = document.getElementById('reviewContent');
@@ -566,12 +555,12 @@ function buildReview() {
 }
 
 function teamWithFlag(teamName) {
-  if (!teamName) return 'â€”';
+  if (!teamName) return '—';
   const team = TEAMS.find(t => t.name === teamName);
   return team ? `${team.flag} ${team.name}` : teamName;
 }
 
-// â”€â”€ SUBMIT PREDICTION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── SUBMIT PREDICTION ────────────────────────────────────────────────
 async function submitPrediction() {
   if (PredState.isSubmitting) return;
 
@@ -635,7 +624,7 @@ async function submitPrediction() {
   }
 }
 
-// â”€â”€ SUCCESS SCREEN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── SUCCESS SCREEN ───────────────────────────────────────────────────
 function showSuccessScreen(entryId) {
   // Hide all wizard steps
   document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active-step'));
@@ -691,7 +680,7 @@ function launchConfetti() {
   }
 }
 
-// â”€â”€ EXPOSE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── EXPOSE ───────────────────────────────────────────────────────────
 window.toggleTeamSelection = toggleTeamSelection;
 window.filterTeams         = filterTeams;
 window.wizardNext          = wizardNext;
