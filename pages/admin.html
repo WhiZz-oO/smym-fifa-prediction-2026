@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel — FIFA 2026 Prediction | SMYM Chemmalamattom</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Icons + Bootstrap -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" />
+
+  <!-- Admin CSS -->
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+
+  <style>
+    body { padding: 0; }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+  </style>
+</head>
+<body class="admin-body">
+
+  <!-- Background orbs -->
+  <div class="bg-orb orb-1" style="opacity:0.5;"></div>
+  <div class="bg-orb orb-2" style="opacity:0.3;"></div>
+
+  <!-- ════════════════════════════════════════════════
+       LOGIN SCREEN
+  ════════════════════════════════════════════════ -->
+  <div id="loginScreen" class="admin-login-wrap">
+    <div class="admin-login-card" data-aos="zoom-in">
+      <div class="admin-login-logo">
+        <i class="fas fa-trophy"></i>
+        <h1>ADMIN PANEL</h1>
+        <p>FIFA 2026 Prediction Portal</p>
+      </div>
+
+      <div id="loginError" class="admin-login-err"></div>
+
+      <div class="form-group-fifa mb-3">
+        <label for="adminPassword"><i class="fas fa-lock me-2"></i>Password</label>
+        <input type="password" id="adminPassword" class="fifa-input"
+               placeholder="Enter admin password" autocomplete="current-password" />
+      </div>
+
+      <button class="btn-primary-gold w-100 justify-content-center" onclick="adminLogin()" id="loginBtn">
+        <i class="fas fa-sign-in-alt me-2"></i> Enter Dashboard
+      </button>
+
+      <div class="text-center mt-4">
+        <a href="../index.html" class="btn-outline-gold" style="font-size:0.8rem; padding: 8px 20px;">
+          <i class="fas fa-arrow-left me-1"></i> Back to Portal
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════
+       DASHBOARD LAYOUT
+  ════════════════════════════════════════════════ -->
+  <div id="dashboardLayout" class="admin-layout" style="display:none;">
+
+    <!-- ── SIDEBAR ─────────────────────────────── -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="admin-sidebar-header">
+        <i class="fas fa-trophy" style="color:var(--gold);font-size:1.4rem;"></i>
+        <div>
+          <h2>FIFA 2026</h2>
+          <span>Admin Dashboard</span>
+        </div>
+      </div>
+
+      <div class="admin-nav-section">Main</div>
+      <button class="admin-nav-item active" data-page="dashboard" onclick="navigateAdmin('dashboard')">
+        <i class="fas fa-tachometer-alt"></i> Dashboard
+      </button>
+      <button class="admin-nav-item" data-page="participants" onclick="navigateAdmin('participants')">
+        <i class="fas fa-users"></i> Participants
+      </button>
+
+      <div class="admin-nav-section">Results</div>
+      <button class="admin-nav-item" data-page="results" onclick="navigateAdmin('results')">
+        <i class="fas fa-clipboard-list"></i> Official Results
+      </button>
+      <button class="admin-nav-item" data-page="evaluate" onclick="navigateAdmin('evaluate')">
+        <i class="fas fa-calculator"></i> Evaluate
+      </button>
+      <button class="admin-nav-item" data-page="leaderboard" onclick="navigateAdmin('leaderboard')">
+        <i class="fas fa-chart-bar"></i> Leaderboard
+      </button>
+
+      <div class="admin-nav-section">System</div>
+      <button class="admin-nav-item" data-page="settings" onclick="navigateAdmin('settings')">
+        <i class="fas fa-cog"></i> Settings
+      </button>
+
+      <div class="admin-sidebar-footer">
+        <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:10px;">
+          Logged in as Admin
+        </div>
+        <button class="admin-logout-btn" onclick="adminLogout()">
+          <i class="fas fa-sign-out-alt"></i> Sign Out
+        </button>
+      </div>
+    </aside>
+
+    <!-- ── MAIN CONTENT ───────────────────────── -->
+    <div class="admin-main">
+
+      <!-- Top bar -->
+      <div class="admin-topbar">
+        <div class="admin-topbar-title" id="topbarTitle">Dashboard</div>
+        <div class="admin-topbar-meta">
+          <span id="currentTime"></span>
+          <span class="demo-badge" id="demoBadge">Demo Mode</span>
+          <a href="../index.html" class="btn-outline-gold" style="font-size:0.75rem;padding:6px 14px;">
+            <i class="fas fa-external-link-alt me-1"></i> View Portal
+          </a>
+        </div>
+      </div>
+
+      <!-- Admin content -->
+      <div class="admin-content">
+
+        <!-- ── PAGE: DASHBOARD ────────────────── -->
+        <div class="admin-page active" id="adminPage-dashboard">
+          <div class="admin-cards">
+            <div class="admin-card">
+              <div class="admin-card-icon icon-gold"><i class="fas fa-users"></i></div>
+              <div class="admin-card-val" id="cardParticipants">0</div>
+              <div class="admin-card-label">Total Participants</div>
+              <div class="admin-card-sub">Predictions submitted</div>
+            </div>
+            <div class="admin-card">
+              <div class="admin-card-icon icon-blue"><i class="fas fa-calendar-day"></i></div>
+              <div class="admin-card-val" id="cardToday">0</div>
+              <div class="admin-card-label">Submissions Today</div>
+            </div>
+            <div class="admin-card">
+              <div class="admin-card-icon icon-gold"><i class="fas fa-trophy"></i></div>
+              <div class="admin-card-val" id="cardTopChamp" style="font-size:1.2rem;">—</div>
+              <div class="admin-card-label">Most Predicted Champion</div>
+            </div>
+            <div class="admin-card">
+              <div class="admin-card-icon icon-blue"><i class="fas fa-shoe-prints"></i></div>
+              <div class="admin-card-val" id="cardTopBoot" style="font-size:1rem;">—</div>
+              <div class="admin-card-label">Most Predicted Golden Boot</div>
+            </div>
+            <div class="admin-card" id="cardHighestWrap">
+              <div class="admin-card-icon icon-green"><i class="fas fa-star"></i></div>
+              <div class="admin-card-val" id="cardHighest">—</div>
+              <div class="admin-card-label">Highest Score</div>
+              <div class="admin-card-sub" id="cardWinner">Not evaluated yet</div>
+            </div>
+            <div class="admin-card">
+              <div class="admin-card-icon icon-green"><i class="fas fa-chart-line"></i></div>
+              <div class="admin-card-val" id="cardAvgScore">—</div>
+              <div class="admin-card-label">Average Score</div>
+              <div class="admin-card-sub">After evaluation</div>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="admin-table-wrap">
+            <div class="admin-table-toolbar">
+              <h3><i class="fas fa-clock me-2" style="color:var(--gold)"></i>Recent Submissions</h3>
+              <button class="btn-admin-sm btn-admin-outline ms-auto" onclick="loadDashboardData()">
+                <i class="fas fa-sync-alt"></i> Refresh
+              </button>
+            </div>
+            <div id="recentActivity">
+              <div style="text-align:center;color:var(--text-muted);padding:32px;">Loading...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PAGE: PARTICIPANTS ─────────────── -->
+        <div class="admin-page" id="adminPage-participants">
+          <div class="admin-table-wrap">
+            <div class="admin-table-toolbar">
+              <h3><i class="fas fa-users me-2" style="color:var(--gold)"></i>All Participants
+                <span style="font-size:0.78rem;color:var(--text-muted);font-weight:400;margin-left:8px;">(<span id="participantTotal">0</span> entries)</span>
+              </h3>
+              <div class="admin-search">
+                <input type="text" id="participantSearch" placeholder="Search by name, phone, ward..." />
+              </div>
+              <button class="btn-admin-sm btn-admin-gold" onclick="exportCSV()">
+                <i class="fas fa-download"></i> Export CSV
+              </button>
+              <button class="btn-admin-sm btn-admin-outline" onclick="loadParticipants()">
+                <i class="fas fa-sync-alt"></i> Refresh
+              </button>
+            </div>
+            <div style="overflow-x:auto;">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>#</th><th>Name</th><th>Age</th><th>Ward</th>
+                    <th>Phone</th><th>Champion</th><th>Golden Boot</th><th>Score</th>
+                  </tr>
+                </thead>
+                <tbody id="participantTableBody">
+                  <tr><td colspan="8" style="text-align:center;color:var(--text-muted);padding:32px;">Loading...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PAGE: OFFICIAL RESULTS ─────────── -->
+        <div class="admin-page" id="adminPage-results">
+          <div class="results-section mb-4">
+            <h3><i class="fas fa-clipboard-check me-2"></i>Enter Official Results</h3>
+            <p>After the FIFA World Cup 2026 concludes, enter the official results below. Then click Evaluate to automatically calculate all scores.</p>
+
+            <div class="results-grid">
+              <div class="results-field">
+                <label><i class="fas fa-trophy me-1"></i> Champion (5 pts)</label>
+                <select id="resChampion" class="fifa-input"><option value="">Select Champion...</option></select>
+              </div>
+              <div class="results-field">
+                <label><i class="fas fa-medal me-1"></i> Runner-Up (3 pts)</label>
+                <select id="resRunnerUp" class="fifa-input"><option value="">Select Runner-Up...</option></select>
+              </div>
+              <div class="results-field">
+                <label><i class="fas fa-award me-1"></i> 3rd Place (2 pts)</label>
+                <select id="resThirdPlace" class="fifa-input"><option value="">Select 3rd Place...</option></select>
+              </div>
+              <div class="results-field">
+                <label><i class="fas fa-star me-1"></i> Finalist 1 (1 pt)</label>
+                <select id="resFin1" class="fifa-input"><option value="">Select Finalist 1...</option></select>
+              </div>
+              <div class="results-field">
+                <label><i class="fas fa-star me-1"></i> Finalist 2 (1 pt)</label>
+                <select id="resFin2" class="fifa-input"><option value="">Select Finalist 2...</option></select>
+              </div>
+              <div class="results-field">
+                <label>🏟️ Semi-Finalist 1 (1 pt)</label>
+                <select id="resSemi1" class="fifa-input"><option value="">Select Semi 1...</option></select>
+              </div>
+              <div class="results-field">
+                <label>🏟️ Semi-Finalist 2 (1 pt)</label>
+                <select id="resSemi2" class="fifa-input"><option value="">Select Semi 2...</option></select>
+              </div>
+              <div class="results-field">
+                <label>🏟️ Semi-Finalist 3 (1 pt)</label>
+                <select id="resSemi3" class="fifa-input"><option value="">Select Semi 3...</option></select>
+              </div>
+              <div class="results-field">
+                <label>🏟️ Semi-Finalist 4 (1 pt)</label>
+                <select id="resSemi4" class="fifa-input"><option value="">Select Semi 4...</option></select>
+              </div>
+              <div class="results-field">
+                <label><i class="fas fa-shoe-prints me-1"></i> Golden Boot (2 pts)</label>
+                <input type="text" id="resGoldenBoot" class="fifa-input" placeholder="Player name" />
+              </div>
+              <div class="results-field">
+                <label><i class="fas fa-futbol me-1"></i> Golden Ball (1 pt)</label>
+                <input type="text" id="resGoldenBall" class="fifa-input" placeholder="Player name" />
+              </div>
+              <div class="results-field">
+                <label><i class="fas fa-hand-paper me-1"></i> Golden Glove (1 pt)</label>
+                <input type="text" id="resGoldenGlove" class="fifa-input" placeholder="Goalkeeper name" />
+              </div>
+              <div class="results-field">
+                <label>🔢 Golden Boot Goals (TB)</label>
+                <input type="number" id="resTBGoals" class="fifa-input" placeholder="e.g. 8" min="0" max="20" />
+              </div>
+              <div class="results-field">
+                <label>🎯 First Goal Scorer (TB)</label>
+                <input type="text" id="resTBScorer" class="fifa-input" placeholder="Player name" />
+              </div>
+              <div class="results-field">
+                <label>⏱️ First Goal Minute (TB)</label>
+                <input type="number" id="resTBMinute" class="fifa-input" placeholder="e.g. 12" min="1" max="120" />
+              </div>
+            </div>
+
+            <div class="d-flex gap-3 flex-wrap">
+              <button class="btn-primary-gold" onclick="saveResults()">
+                <i class="fas fa-save me-2"></i> Save Official Results
+              </button>
+              <button class="btn-outline-gold" onclick="navigateAdmin('evaluate')">
+                <i class="fas fa-calculator me-2"></i> Go to Evaluate
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PAGE: EVALUATE ─────────────────── -->
+        <div class="admin-page" id="adminPage-evaluate">
+          <div class="evaluate-section mb-4">
+            <div class="evaluate-icon"><i class="fas fa-calculator"></i></div>
+            <div class="evaluate-text">
+              <h4>Evaluate All Predictions</h4>
+              <p>This will automatically calculate scores for every participant based on the official results. Ensure you have saved the results first.</p>
+            </div>
+            <button class="btn-primary-gold ms-auto" onclick="evaluatePredictions()">
+              <i class="fas fa-play me-2"></i> Start Evaluation
+            </button>
+          </div>
+
+          <div class="glass-card">
+            <h4 style="font-family:var(--font-heading);letter-spacing:1px;margin-bottom:16px;">Scoring Breakdown</h4>
+            <table class="admin-table">
+              <thead>
+                <tr><th>Prediction</th><th>Points</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Champion Correct</td><td><span class="score-badge">5</span></td></tr>
+                <tr><td>Runner-Up Correct</td><td><span class="score-badge">3</span></td></tr>
+                <tr><td>3rd Place Correct</td><td><span class="score-badge">2</span></td></tr>
+                <tr><td>Each Correct Finalist</td><td><span class="score-badge">1 ×2</span></td></tr>
+                <tr><td>Each Correct Semi-Finalist</td><td><span class="score-badge">1 ×4</span></td></tr>
+                <tr><td>Golden Boot Correct</td><td><span class="score-badge">2</span></td></tr>
+                <tr><td>Golden Ball Correct</td><td><span class="score-badge">1</span></td></tr>
+                <tr><td>Golden Glove Correct</td><td><span class="score-badge">1</span></td></tr>
+                <tr style="border-top:2px solid var(--gold);"><td><strong>Maximum Score</strong></td><td><strong><span class="score-badge" style="font-size:1.1rem;">20</span></strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ── PAGE: LEADERBOARD ──────────────── -->
+        <div class="admin-page" id="adminPage-leaderboard">
+          <div class="admin-table-wrap">
+            <div class="admin-table-toolbar">
+              <h3><i class="fas fa-chart-bar me-2" style="color:var(--gold)"></i>Scored Leaderboard</h3>
+              <button class="btn-admin-sm btn-admin-outline ms-auto" onclick="loadAdminLeaderboard()">
+                <i class="fas fa-sync-alt"></i> Refresh
+              </button>
+              <button class="btn-admin-sm btn-admin-gold" onclick="exportCSV()">
+                <i class="fas fa-download"></i> Export
+              </button>
+            </div>
+            <div style="overflow-x:auto;">
+              <table class="admin-table">
+                <thead>
+                  <tr><th>Rank</th><th>Name</th><th>Ward</th><th>Champion Picked</th><th>Score</th></tr>
+                </thead>
+                <tbody id="adminLbBody">
+                  <tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:32px;">Run evaluation first to see scores.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PAGE: SETTINGS ────────────────── -->
+        <div class="admin-page" id="adminPage-settings">
+          <div class="glass-card">
+            <h3 style="font-family:var(--font-heading);letter-spacing:2px;margin-bottom:20px;">⚙️ Settings</h3>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="form-group-fifa">
+                  <label>Contest Last Date</label>
+                  <input type="text" class="fifa-input" value="12 July 2026" readonly />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group-fifa">
+                  <label>Prize Amount</label>
+                  <input type="text" class="fifa-input" value="₹500" readonly />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group-fifa">
+                  <label>Backend Mode</label>
+                  <input type="text" class="fifa-input" id="settingsMode" readonly />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group-fifa">
+                  <label>Google Apps Script URL</label>
+                  <input type="text" id="settingsApiUrl" class="fifa-input" placeholder="Paste your deployed script URL here" />
+                </div>
+              </div>
+            </div>
+            <div class="mt-4">
+              <h5 style="color:var(--gold);font-family:var(--font-num);">⚠️ Danger Zone</h5>
+              <button class="btn-admin-sm btn-admin-danger mt-2"
+                onclick="if(confirm('Clear ALL local submissions? This cannot be undone.')) { localStorage.removeItem('fifa2026_all'); localStorage.removeItem('fifa2026_submitted'); alert('Cleared.'); loadDashboardData(); }">
+                <i class="fas fa-trash me-1"></i> Clear All Local Data
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /admin-content -->
+    </div><!-- /admin-main -->
+  </div><!-- /admin-layout -->
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.10.1/sweetalert2.all.min.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/admin.js"></script>
+
+  <script>
+    // Populate result team selects with all 48 teams
+    const teamList = [
+      'Argentina','Australia','Austria','Belgium','Bolivia','Brazil',
+      'Canada','Chile','Colombia','Costa Rica','Croatia','Czech Republic',
+      'Denmark','Ecuador','Egypt','England','France','Germany','Honduras',
+      'Iran','Italy','Ivory Coast','Jamaica','Japan','Jordan','Mexico',
+      'Morocco','Netherlands','New Zealand','Nigeria','Norway','Panama',
+      'Paraguay','Peru','Poland','Portugal','Qatar','Saudi Arabia','Senegal',
+      'Serbia','South Africa','South Korea','Spain','Switzerland','Tunisia',
+      'Turkey','Ukraine','United States'
+    ];
+    document.querySelectorAll('#adminPage-results select').forEach(sel => {
+      const firstOpt = sel.options[0];
+      teamList.forEach(t => { const o = new Option(t, t); sel.appendChild(o); });
+    });
+
+    // Clock
+    function updateClock() {
+      const el = document.getElementById('currentTime');
+      if (el) el.textContent = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+    }
+    updateClock();
+    setInterval(updateClock, 30000);
+
+    // Demo badge
+    const badge = document.getElementById('demoBadge');
+    if (badge && window.FIFA_API && !window.FIFA_API.DEMO_MODE) badge.style.display = 'none';
+
+    // Settings mode display
+    const modeEl = document.getElementById('settingsMode');
+    if (modeEl) modeEl.value = window.FIFA_API?.DEMO_MODE ? 'Demo (localStorage)' : 'Live (Google Sheets)';
+  </script>
+</body>
+</html>
