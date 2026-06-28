@@ -526,8 +526,8 @@ function buildReview() {
     { label: '⚽ Golden Ball',       value: a.goldenBall   || '—' },
     { label: '🧤 Golden Glove',      value: a.goldenGlove  || '—' },
     { label: '🔢 Goals (TB)',        value: a.tbGoals      || '—' },
-    { label: '🎯 First Scorer (TB)', value: a.tbFirstScorer  || '—' },
-    { label: '⏱️ First Goal Min (TB)', value: a.tbFirstMinute || '—' },
+    { label: '🎯 Who will score the first goal in the final match (TB)', value: a.tbFirstScorer || '—' },
+    { label: '⏱️ In final match in which minute the first goal will occure (TB)', value: a.tbFirstMinute || '—' },
   ];
 
   const el = document.getElementById('reviewContent');
