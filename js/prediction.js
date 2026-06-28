@@ -245,6 +245,7 @@ function renderTeamGrids() {
       </div>
     `).join('');
   });
+  if (typeof updateDependentGrids === 'function') updateDependentGrids();
 }
 
 // ── TEAM SELECTION TOGGLE ────────────────────────────────────────────
@@ -292,6 +293,7 @@ function toggleTeamSelection(teamName, type, cardEl) {
 
   updateCounters();
   hideError(`${type.toLowerCase()}Err`);
+  if (typeof updateDependentGrids === 'function') updateDependentGrids();
 }
 
 function showMaxWarning(type, max) {
@@ -674,3 +676,62 @@ window.TEAMS               = TEAMS;
 window.PLAYERS             = PLAYERS;
 window.GOALKEEPERS         = GOALKEEPERS;
 window.PredState           = PredState;
+
+// Cascade visibility logic
+function deselectTeam(teamName, type) {
+  const selectionKey = {
+    SF:    'semifinalists',
+    Fin:   'finalists',
+    Champ: 'champion',
+    RU:    'runnerUp',
+    Third: 'thirdPlace'
+  }[type];
+  
+  const isSingle = (type === 'Champ' || type === 'RU' || type === 'Third');
+  
+  if (isSingle) {
+    if (PredState.selections[selectionKey] === teamName) {
+      PredState.selections[selectionKey] = null;
+    }
+  } else {
+    const arr = PredState.selections[selectionKey];
+    if (arr) {
+      const idx = arr.indexOf(teamName);
+      if (idx > -1) arr.splice(idx, 1);
+    }
+  }
+  
+  const card = document.querySelector('#teamsGrid' + type + ' .team-card[data-team="' + teamName + '"]');
+  if (card) card.classList.remove('selected');
+  updateCounters();
+}
+
+function updateDependentGrids() {
+  const s = PredState.selections;
+
+  document.querySelectorAll('#teamsGridFin .team-card, #teamsGridThird .team-card').forEach(card => {
+    const team = card.getAttribute('data-team');
+    if (s.semifinalists.includes(team)) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+      if (card.classList.contains('selected')) {
+        const type = card.getAttribute('data-type');
+        deselectTeam(team, type);
+      }
+    }
+  });
+
+  document.querySelectorAll('#teamsGridChamp .team-card, #teamsGridRU .team-card').forEach(card => {
+    const team = card.getAttribute('data-team');
+    if (s.finalists.includes(team)) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+      if (card.classList.contains('selected')) {
+        const type = card.getAttribute('data-type');
+        deselectTeam(team, type);
+      }
+    }
+  });
+}
