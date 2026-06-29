@@ -10,7 +10,7 @@ const TEAMS = [
   { name: 'Australia',    flag: '🇦🇺', conf: 'AFC' },
   { name: 'Austria',      flag: '🇦🇹', conf: 'UEFA' },
   { name: 'Belgium',      flag: '🇧🇪', conf: 'UEFA' },
-  { name: 'Bosnia and Herzegovina', flag: '🇧🇦', conf: 'UEFA' },
+  { name: 'Bosnia',       flag: '🇧🇦', conf: 'UEFA' },
   { name: 'Brazil',       flag: '🇧🇷', conf: 'CONMEBOL' },
   { name: 'Canada',       flag: '🇨🇦', conf: 'CONCACAF', host: true },
   { name: 'Cape Verde',   flag: '🇨🇻', conf: 'CAF' },

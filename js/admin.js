@@ -482,7 +482,7 @@ function teamFlag(name) {
   if (!name) return '';
       const flags = {
       'Algeria': '🇩🇿', 'Argentina': '🇦🇷', 'Australia': '🇦🇺', 'Austria': '🇦🇹',
-      'Belgium': '🇧🇪', 'Bosnia and Herzegovina': '🇧🇦', 'Brazil': '🇧🇷', 'Canada': '🇨🇦',
+      'Belgium': '🇧🇪', 'Bosnia': '🇧🇦', 'Brazil': '🇧🇷', 'Canada': '🇨🇦',
       'Cape Verde': '🇨🇻', 'Colombia': '🇨🇴', 'DR Congo': '🇨🇩', 'Croatia': '🇭🇷',
       'Ecuador': '🇪🇨', 'Egypt': '🇪🇬', 'England': '🏴󠁧󠁢󠁥󠁮󠁧󠁿', 'France': '🇫🇷',
       'Germany': '🇩🇪', 'Ghana': '🇬🇭', 'Ivory Coast': '🇨🇮', 'Japan': '🇯🇵',
