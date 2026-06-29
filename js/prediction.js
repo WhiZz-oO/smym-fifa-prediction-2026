@@ -54,7 +54,7 @@ const PLAYERS = [
   'Ahmed Nabil Koka (Egypt)',
   'Ahmed Ramadan Beckham (Egypt)',
   'Ahmed Sayed Zizo (Egypt)',
-  'Aiden O'Neill (Australia)',
+  'Aiden O Neill (Australia)',
   'Ajdin Hrustic (Australia)',
   'Alan Franco (Ecuador)',
   'Alan Minda (Ecuador)',
@@ -561,7 +561,7 @@ const PLAYERS = [
   'Moussa Niakhaté (Senegal)',
   'Moïse Bombito (Canada)',
   'Muhammed Cham (Austria)',
-  'N'Golo Kanté (France)',
+  'NGolo Kanté (France)',
   'Nabil Bentaleb (Algeria)',
   'Nadhir Benbouali (Algeria)',
   'Nadiem Amiri (Germany)',
@@ -572,11 +572,11 @@ const PLAYERS = [
   'Nathan Saliba (Canada)',
   'Nestory Irankunda (Australia)',
   'Neymar (Brazil)',
-  'Ngal'ayel Mukau (DR Congo)',
+  'Ngalayel Mukau (DR Congo)',
   'Nick Woltemade (Germany)',
   'Niclas Eliasson (Sweden)',
   'Nico Elvedi (Switzerland)',
-  'Nico O'Reilly (England)',
+  'Nico O Reilly (England)',
   'Nico Williams (Spain)',
   'Nicolas Jackson (Senegal)',
   'Nicolas Kühn (Austria)',
@@ -1068,7 +1068,20 @@ function initChoicesDropdowns() {
     classNames: { containerOuter: 'choices' }
   };
 
-  
+  const gloveConfig = { ...choicesConfig, searchPlaceholderValue: 'Type goalkeeper name...' };
+
+  if (bootEl && !PredState.choicesInstances.goldenBoot) {
+    populateSelect(bootEl, PLAYERS);
+    PredState.choicesInstances.goldenBoot = new Choices(bootEl, choicesConfig);
+  }
+  if (ballEl && !PredState.choicesInstances.goldenBall) {
+    populateSelect(ballEl, PLAYERS);
+    PredState.choicesInstances.goldenBall = new Choices(ballEl, choicesConfig);
+  }
+  if (gloveEl && !PredState.choicesInstances.goldenGlove) {
+    populateSelect(gloveEl, GOALKEEPERS);
+    PredState.choicesInstances.goldenGlove = new Choices(gloveEl, gloveConfig);
+  }
   if (tbEl && !PredState.choicesInstances.tbScorer) {
     populateSelect(tbEl, PLAYERS);
     PredState.choicesInstances.tbScorer = new Choices(tbEl, choicesConfig);
