@@ -480,21 +480,16 @@ function formatDate(iso) {
 
 function teamFlag(name) {
   if (!name) return '';
-  const flags = {
-    'Argentina': '🇦🇷', 'Australia': '🇦🇺', 'Austria': '🇦🇹', 'Belgium': '🇧🇪',
-    'Bolivia': '🇧🇴', 'Brazil': '🇧🇷', 'Canada': '🇨🇦', 'Chile': '🇨🇱',
-    'Colombia': '🇨🇴', 'Costa Rica': '🇨🇷', 'Croatia': '🇭🇷', 'Czech Republic': '🇨🇿',
-    'Denmark': '🇩🇰', 'Ecuador': '🇪🇨', 'Egypt': '🇪🇬', 'England': '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
-    'France': '🇫🇷', 'Germany': '🇩🇪', 'Honduras': '🇭🇳', 'Iran': '🇮🇷',
-    'Italy': '🇮🇹', 'Ivory Coast': '🇨🇮', 'Jamaica': '🇯🇲', 'Japan': '🇯🇵',
-    'Jordan': '🇯🇴', 'Mexico': '🇲🇽', 'Morocco': '🇲🇦', 'Netherlands': '🇳🇱',
-    'New Zealand': '🇳🇿', 'Nigeria': '🇳🇬', 'Norway': '🇳🇴', 'Panama': '🇵🇦',
-    'Paraguay': '🇵🇾', 'Peru': '🇵🇪', 'Poland': '🇵🇱', 'Portugal': '🇵🇹',
-    'Qatar': '🇶🇦', 'Saudi Arabia': '🇸🇦', 'Senegal': '🇸🇳', 'Serbia': '🇷🇸',
-    'South Africa': '🇿🇦', 'South Korea': '🇰🇷', 'Spain': '🇪🇸', 'Switzerland': '🇨🇭',
-    'Tunisia': '🇹🇳', 'Turkey': '🇹🇷', 'Ukraine': '🇺🇦', 'United States': '🇺🇸',
-    'Uruguay': '🇺🇾', 'Venezuela': '🇻🇪'
-  };
+      const flags = {
+      'Algeria': '🇩🇿', 'Argentina': '🇦🇷', 'Australia': '🇦🇺', 'Austria': '🇦🇹',
+      'Belgium': '🇧🇪', 'Bosnia and Herzegovina': '🇧🇦', 'Brazil': '🇧🇷', 'Canada': '🇨🇦',
+      'Cape Verde': '🇨🇻', 'Colombia': '🇨🇴', 'DR Congo': '🇨🇩', 'Croatia': '🇭🇷',
+      'Ecuador': '🇪🇨', 'Egypt': '🇪🇬', 'England': '🏴󠁧󠁢󠁥󠁮󠁧󠁿', 'France': '🇫🇷',
+      'Germany': '🇩🇪', 'Ghana': '🇬🇭', 'Ivory Coast': '🇨🇮', 'Japan': '🇯🇵',
+      'Mexico': '🇲🇽', 'Morocco': '🇲🇦', 'Netherlands': '🇳🇱', 'Norway': '🇳🇴',
+      'Paraguay': '🇵🇾', 'Portugal': '🇵🇹', 'Senegal': '🇸🇳', 'South Africa': '🇿🇦',
+      'Spain': '🇪🇸', 'Sweden': '🇸🇪', 'Switzerland': '🇨🇭', 'United States': '🇺🇸'
+    };
   return flags[name] || '';
 }
 

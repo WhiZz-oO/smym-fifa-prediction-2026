@@ -10,12 +10,12 @@ const TEAMS = [
   { name: 'Australia',    flag: '🇦🇺', conf: 'AFC' },
   { name: 'Austria',      flag: '🇦🇹', conf: 'UEFA' },
   { name: 'Belgium',      flag: '🇧🇪', conf: 'UEFA' },
-  { name: 'Bosnia',       flag: '🇧🇦', conf: 'UEFA' },
+  { name: 'Bosnia and Herzegovina', flag: '🇧🇦', conf: 'UEFA' },
   { name: 'Brazil',       flag: '🇧🇷', conf: 'CONMEBOL' },
   { name: 'Canada',       flag: '🇨🇦', conf: 'CONCACAF', host: true },
   { name: 'Cape Verde',   flag: '🇨🇻', conf: 'CAF' },
   { name: 'Colombia',     flag: '🇨🇴', conf: 'CONMEBOL' },
-  { name: 'Congo',        flag: '🇨🇩', conf: 'CAF' },
+  { name: 'DR Congo',       flag: '🇨🇩', conf: 'CAF' },
   { name: 'Croatia',      flag: '🇭🇷', conf: 'UEFA' },
   { name: 'Ecuador',      flag: '🇪🇨', conf: 'CONMEBOL' },
   { name: 'Egypt',        flag: '🇪🇬', conf: 'CAF' },
@@ -36,7 +36,7 @@ const TEAMS = [
   { name: 'Spain',        flag: '🇪🇸', conf: 'UEFA' },
   { name: 'Sweden',       flag: '🇸🇪', conf: 'UEFA' },
   { name: 'Switzerland',  flag: '🇨🇭', conf: 'UEFA' },
-  { name: 'USA',          flag: '🇺🇸', conf: 'CONCACAF', host: true }
+  { name: 'United States',flag: '🇺🇸', conf: 'CONCACAF', host: true }
 ];
 
 // ── DATA: PLAYERS (for award dropdowns) ──────────────────────────────
